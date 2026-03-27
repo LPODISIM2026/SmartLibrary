@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello world!");
 				
-		Libro finalFantasy = new Libro(
+		Book finalFantasy = new Book(
 				"Final fantasy X", "autore", "2010", 
 				"754-8657-4865", 
 				23.30f, 
@@ -23,9 +23,15 @@ public class Main {
 //		System.out.println(String.valueOf(false));
 //		System.out.println(false);
 		
-		User user = new User(1, "studente", "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
+		User user = new User(11, "studente", "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
 				"0863445566", null, "mario.rossi@email.com", 30.00f, (short) 0, (short) 0);
-		System.out.println(user);		
+		User user2 = new User(11, "studente", "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
+				"0863445566", null, "mario.rossi@email.com", 30.00f, (short) 0, (short) 0);
+		User user3 = new User("studente", "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
+				"0863445566", null, "mario.rossi@email.com", 30.00f, (short) 0, (short) 0);
+		System.out.println(user);
+		System.out.println(user2);
+		System.out.println(user3);
 	}
 
 }

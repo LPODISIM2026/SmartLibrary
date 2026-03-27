@@ -1,10 +1,6 @@
 package it.univaq.biblioteca;
 
-
-
-
-
-public class Libro {
+public class Book {
 	
 	private String title;
 	private String author;
@@ -31,7 +27,7 @@ public class Libro {
 	 * @param language
 	 * @param _abstract
 	 */
-	public Libro(String title, String author, String publishedDate, String isbn, float price, String category,
+	public Book(String title, String author, String publishedDate, String isbn, float price, String category,
 			String editor, int pages, String language, String _abstract) {
 		super();
 		this.title = title;
@@ -46,7 +42,7 @@ public class Libro {
 		this._abstract = _abstract;
 	}
 
-	public Libro(String title, String author, String publishedDate, String isbn, int pages, Libro libro) {
+	public Book(String title, String author, String publishedDate, String isbn, int pages, Book libro) {
 		super();
 		// New information
 		this.title = title;

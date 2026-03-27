@@ -3,7 +3,8 @@ package it.univaq.biblioteca;
 
 public class User {
 	
-	private long ID;
+	static private long ID_source = 0;
+	private long ID; 
 	private String type; // (“studente”, “docente”, “esterno”)
 
 	// Personal Data
@@ -23,6 +24,32 @@ public class User {
 	private short creditScore; // can be the same in the same family
 	
 	
+	private void id_set() {
+		this.ID = User.ID_source;
+		User.ID_source+= 2;
+	}
+	
+	private void data_set(String type, String name, String surname, String birthDate, String taxCode,
+			boolean bioGender, String gender, String phoneNumber, String mobileNumber, String email, float budget,
+			short feePlan, short creditScore) {
+		this.id_set();
+		this.type = type;
+		this.name = name;
+		this.surname = surname;
+		this.birthDate = birthDate;
+		this.taxCode = taxCode;
+		this.bioGender = bioGender;
+		this.gender = gender;
+		this.phoneNumber = phoneNumber;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.budget = budget;
+		this.feePlan = feePlan;
+		this.creditScore = creditScore;
+	}
+	
+	
+	
 	
 	/**
 	 * @param iD
@@ -39,25 +66,39 @@ public class User {
 	 * @param budget
 	 * @param feePlan
 	 * @param creditScore
+	 */
+	@Deprecated
+	public User(long iD, String type, String name, String surname, String birthDate, String taxCode, boolean bioGender,
+			String gender, String phoneNumber, String mobileNumber, String email, float budget, short feePlan,
+			short creditScore) {
+		super();
+		this.data_set(type, name, surname, birthDate, taxCode, bioGender, gender, phoneNumber, mobileNumber, email, budget, feePlan, creditScore);
+	}
+
+
+
+
+	/**
+	 * @param iD
+	 * @param type
+	 * @param name
+	 * @param surname
+	 * @param birthDate
+	 * @param taxCode
+	 * @param bioGender
+	 * @param gender
+	 * @param phoneNumber
+	 * @param mobileNumber
+	 * @param email
+	 * @param budget
+	 * @param feePlan
+	 * @param creditScore
 	 */	
-	public User(long iD, String type, String name, String surname, String birthDate, String taxCode,
+	public User(String type, String name, String surname, String birthDate, String taxCode,
 			boolean bioGender, String gender, String phoneNumber, String mobileNumber, String email, float budget,
 			short feePlan, short creditScore) {
 		super();
-		ID = iD;
-		this.type = type;
-		this.name = name;
-		this.surname = surname;
-		this.birthDate = birthDate;
-		this.taxCode = taxCode;
-		this.bioGender = bioGender;
-		this.gender = gender;
-		this.phoneNumber = phoneNumber;
-		this.mobileNumber = mobileNumber;
-		this.email = email;
-		this.budget = budget;
-		this.feePlan = feePlan;
-		this.creditScore = creditScore;
+		this.data_set(type, name, surname, birthDate, taxCode, bioGender, gender, phoneNumber, mobileNumber, email, budget, feePlan, creditScore);
 	}
 	/**
 	 * This is used for registering a member of the same family of another registered user
@@ -75,10 +116,10 @@ public class User {
 	 * @param feePlan
 	 * @param user
 	 */
-	public User(long iD, String type, String name, String birthDate, String taxCode, boolean bioGender, String gender,
+	public User(String type, String name, String birthDate, String taxCode, boolean bioGender, String gender,
 			String mobileNumber, String email, float budget, short feePlan, User user) {
 		super();
-		ID = iD;
+		this.id_set();
 		this.type = type;
 		this.name = name;
 		this.birthDate = birthDate;
@@ -100,12 +141,7 @@ public class User {
 	public long getID() {
 		return ID;
 	}
-	/**
-	 * @param iD the iD to set
-	 */
-	public void setID(long iD) {
-		ID = iD;
-	}
+	
 	/**
 	 * @return the type
 	 */
