@@ -10,7 +10,7 @@ public class User {
 	// Personal Data
 	private String name;
 	private String surname;
-	private String birthDate;
+	private String birthDate; // TODO - convert to Date Object
 	private String taxCode;
 	private boolean bioGender;
 	private String gender;
@@ -22,6 +22,9 @@ public class User {
 	private float budget;
 	private short feePlan;
 	private short creditScore; // can be the same in the same family
+	
+	// Registration
+	private String registrationDate; // TODO - convert to Date object
 	
 	
 	private void id_set() {
@@ -103,7 +106,6 @@ public class User {
 	/**
 	 * This is used for registering a member of the same family of another registered user
 	 * 
-	 * @param iD
 	 * @param type
 	 * @param name
 	 * @param birthDate

@@ -4,7 +4,7 @@ public class Book {
 	
 	private String title;
 	private String author;
-	private String publishedDate;
+	private String publishedDate; // TODO - convert to Date object
 	private String isbn;
 	private float price;
 	private String category;
