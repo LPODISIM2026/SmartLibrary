@@ -1,9 +1,11 @@
 package it.univaq.biblioteca;
 
+import it.univaq.biblioteca.books.Item;
+
 public class Library {
 	
 	// Catalogo libri
-	private Book[] books;
+	private Item[] catalog;
 	private int book_index = -1;
 	
 	// Elenco utenti
@@ -17,13 +19,14 @@ public class Library {
 	 */
 	public Library(int catalogSize, int maxUsers) {
 		super();
-		books = new Book[catalogSize];
+//		books = new Book[catalogSize];
+		catalog = new Item[catalogSize];
 		users = new User[maxUsers];		
 	}
 	
 	public boolean addBook(Book book) {
 		if (this.ricercaPerIsbn(book.getIsbn()) == null) {
-			books[++book_index] = book;
+			catalog[++book_index] = book;
 			return true;
 		}
 		else return false; // else posso anche toglierlo in questo caso
@@ -31,6 +34,16 @@ public class Library {
 	
 	public User getUser(int index) {
 		return users[index];
+	}
+	
+	public Book getBook(int index) {
+		if (catalog[index] instanceof Book)
+			return (Book) catalog[index];
+		return null;
+	}
+	
+	public Item getItem(int index) {
+		return catalog[index];
 	}
 	
 	public void addUser(User user) {
@@ -45,10 +58,29 @@ public class Library {
 	}
 	
 	public Book ricercaPerIsbn(String isbn) {
-		for (Book b: books)
-			if (b != null && b.getIsbn().equals(isbn))
-				return b;
+		for (Item i: catalog) {			
+			if (i instanceof Book) {
+				Book b = (Book) i;
+				if (b != null && b.getIsbn().equals(isbn))
+					return b;
+			}
+		}
 		return null;
+	}
+	
+	public Book ricercaTitoloPiuRecente(Book book) {
+		if (book == null) return null;
+		Book result = null;
+		for (Item i: catalog) {
+			if (i instanceof Book) {
+				Book b = (Book) i;
+				if (b!= null && b.getPublishedDate().after(book.getPublishedDate()))
+					if (result == null) result = b;
+					else if (b.getPublishedDate().after(result.getPublishedDate()))
+						result = b;
+			}
+		}
+		return result;
 	}
 	
 	public void debug() {
@@ -57,7 +89,7 @@ public class Library {
 			if (u != null)
 				System.out.println(u);
 		System.out.println("Libri ->");
-		for (Book b: books)
+		for (Item b: catalog)
 			if (b != null)
 				System.out.println(b);
 	}

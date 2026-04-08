@@ -1,5 +1,9 @@
 package it.univaq.biblioteca;
 
+import java.time.Instant;
+import java.util.Date;
+
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -109,23 +113,32 @@ public class Main {
 //		else System.out.println("Inserimento 3:NO");
 		
 		System.out.println("Inserimento 1:" + (
-				library.addBook(new Book("Title1", "Me", "1/04/2026", "5674783657846357", 20f, "horror", "editor1", 300, "italiano", "")) ?
+				library.addBook(new Book("Title1", "Me", new Date(126, 3, 1) /* 1/04/2026 */, "5674783657846357", 20f, "horror", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 		));
 		
 		System.out.println("Inserimento 2:" + (
-				library.addBook(new Book("Title2", "Me", "1/04/2025", "5674783657846357", 20f, "science", "editor1", 300, "italiano", "")) ?
+				library.addBook(new Book("Title2", "Me", new Date(125, 3, 1) /* 1/04/2025 */, "5674783657846358", 20f, "science", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 				));
 		
 		System.out.println("Inserimento 3:" +(
-				library.addBook(new Book("Title3", "Me", "1/04/2024", "5674783657846357", 20f, "thriller", "editor1", 300, "italiano", "")) ?
+				library.addBook(new Book("Title3", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846359", 20f, "thriller", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 				));		
 		
 		library.debug();
-		
+		System.out.println();
 		System.out.println(library.ricercaPerIsbn("5674783657846358"));
+		
+		System.out.println();
+		System.out.println(library.ricercaTitoloPiuRecente(library.getBook(2)));
+		
+//		it.univaq.biblioteca.books.Item item1 = new it.univaq.biblioteca.books.Item();
+//		System.out.println(item1.TEST);
+//		
+//		it.univaq.biblioteca.users.Item item2 = new it.univaq.biblioteca.users.Item();
+//		System.out.println(item2.TEST2);
 	}
 
 }

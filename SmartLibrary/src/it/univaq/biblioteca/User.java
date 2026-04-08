@@ -3,9 +3,12 @@ package it.univaq.biblioteca;
 
 public class User {
 	
+	// Class properties
 	static private long ID_source = 0;
+	
+	// User IDs
 	private long ID; 
-	private String type; // (“studente”, “docente”, “esterno”)
+	private String type; // (“studente”, “docente”, “esterno”) TODO - change with enumeration
 
 	// Personal Data
 	private String name;

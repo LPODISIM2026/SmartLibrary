@@ -1,10 +1,14 @@
 package it.univaq.biblioteca;
 
-public class Book {
+import java.util.Date;
+
+import it.univaq.biblioteca.books.Item;
+
+public class Book extends Item {
 	
 	private String title;
 	private String author;
-	private String publishedDate; // TODO - convert to Date object
+	private Date publishedDate; // TODO - convert to Date object
 	private String isbn;
 	private float price;
 	private String category;
@@ -27,7 +31,7 @@ public class Book {
 	 * @param language
 	 * @param _abstract
 	 */
-	public Book(String title, String author, String publishedDate, String isbn, float price, String category,
+	public Book(String title, String author, Date publishedDate, String isbn, float price, String category,
 			String editor, int pages, String language, String _abstract) {
 		super();
 		this.title = title;
@@ -42,7 +46,7 @@ public class Book {
 		this._abstract = _abstract;
 	}
 
-	public Book(String title, String author, String publishedDate, String isbn, int pages, Book libro) {
+	public Book(String title, String author, Date publishedDate, String isbn, int pages, Book libro) {
 		super();
 		// New information
 		this.title = title;
@@ -144,14 +148,14 @@ public class Book {
 	/**
 	 * @return the publishedDate
 	 */
-	public String getPublishedDate() {
+	public Date getPublishedDate() {
 		return publishedDate;
 	}
 
 	/**
 	 * @param publishedDate the publishedDate to set
 	 */
-	public void setPublishedDate(String publishedDate) {
+	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
 	}
 
