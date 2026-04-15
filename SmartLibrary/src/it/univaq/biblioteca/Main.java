@@ -3,6 +3,10 @@ package it.univaq.biblioteca;
 import java.time.Instant;
 import java.util.Date;
 
+import it.univaq.biblioteca.catalog.Book;
+import it.univaq.biblioteca.catalog.DVD;
+import it.univaq.biblioteca.users.User;
+
 
 public class Main {
 
@@ -125,7 +129,12 @@ public class Main {
 		System.out.println("Inserimento 3:" +(
 				library.addBook(new Book("Title3", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846359", 20f, "thriller", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
-				));		
+				));
+		
+		System.out.println("Inserimento 4:" +(
+				library.addDVD(new DVD("Film1", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846360", 20f, "thriller", "editor1", "italiano", 180, "DVD", 4.7f)) ?
+						"OK" : "NO"
+				));
 		
 		library.debug();
 		System.out.println();
@@ -139,6 +148,8 @@ public class Main {
 //		
 //		it.univaq.biblioteca.users.Item item2 = new it.univaq.biblioteca.users.Item();
 //		System.out.println(item2.TEST2);
+		
+//		it.univaq.biblioteca.books.Item.test();
 	}
 
 }

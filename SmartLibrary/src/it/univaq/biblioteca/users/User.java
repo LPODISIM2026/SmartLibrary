@@ -1,4 +1,4 @@
-package it.univaq.biblioteca;
+package it.univaq.biblioteca.users;
 
 
 public class User {

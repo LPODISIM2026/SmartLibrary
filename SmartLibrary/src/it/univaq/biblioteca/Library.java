@@ -1,6 +1,9 @@
 package it.univaq.biblioteca;
 
-import it.univaq.biblioteca.books.Item;
+import it.univaq.biblioteca.catalog.Book;
+import it.univaq.biblioteca.catalog.DVD;
+import it.univaq.biblioteca.catalog.Item;
+import it.univaq.biblioteca.users.User;
 
 public class Library {
 	
@@ -25,8 +28,16 @@ public class Library {
 	}
 	
 	public boolean addBook(Book book) {
-		if (this.ricercaPerIsbn(book.getIsbn()) == null) {
+		if (this.ricercaGeneralePerIsbn(book.getIsbn()) == null) {
 			catalog[++book_index] = book;
+			return true;
+		}
+		else return false; // else posso anche toglierlo in questo caso
+	}
+	
+	public boolean addDVD(DVD dvd) {
+		if (this.ricercaGeneralePerIsbn(dvd.getIsbn()) == null) {
+			catalog[++book_index] = dvd;
 			return true;
 		}
 		else return false; // else posso anche toglierlo in questo caso
@@ -57,10 +68,29 @@ public class Library {
 //			System.out.println(i + ":" + users[i]);
 	}
 	
+	public Item ricercaGeneralePerIsbn(String isbn) {
+		for (Item b: catalog) {	
+			if (b != null && b.getIsbn().equals(isbn))
+				return b;
+		}
+		return null;
+	}
+	
 	public Book ricercaPerIsbn(String isbn) {
 		for (Item i: catalog) {			
 			if (i instanceof Book) {
 				Book b = (Book) i;
+				if (b != null && b.getIsbn().equals(isbn))
+					return b;
+			}
+		}
+		return null;
+	}
+	
+	public DVD ricercaDvdPerIsbn(String isbn) {
+		for (Item i: catalog) {			
+			if (i instanceof DVD) {
+				DVD b = (DVD) i;
 				if (b != null && b.getIsbn().equals(isbn))
 					return b;
 			}
