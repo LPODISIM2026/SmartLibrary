@@ -5,7 +5,10 @@ import java.util.Date;
 
 import it.univaq.biblioteca.catalog.Book;
 import it.univaq.biblioteca.catalog.DVD;
+import it.univaq.biblioteca.catalog.Item;
+import it.univaq.biblioteca.catalog.Magazine;
 import it.univaq.biblioteca.users.User;
+import it.univaq.biblioteca.users.UserType;
 
 
 public class Main {
@@ -83,18 +86,18 @@ public class Main {
 		
 		// Inserimento utenti
 		
-		library.addUser(new User(11, "studente", "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
+		library.addUser(new User(11, UserType.STUDENTE, "Mario", "Rossi", "21-04-1976", "MRARSS76D21I456F", false, "M",
 				"0863445566", null, "mario.rossi@email.com", 30.00f, (short) 0, (short) 0));		 
 		
-		library.addUser(new User(11, "studente", "Gianni", "Verdi", "12-03-1981", "GNNVRD81C12I456F", false, "M",
+		library.addUser(new User(11, UserType.STUDENTE, "Gianni", "Verdi", "12-03-1981", "GNNVRD81C12I456F", false, "M",
 				"0863445566", null, "gianni.verdi@email.com", 30.00f, (short) 0, (short) 0));
 		
-		library.addUser(new User("docente", "Alfredo", "Giambattista", "13-02-1966", "LFRGMB66B13I456F", false, "M",
+		library.addUser(new User(UserType.DOCENTE, "Alfredo", "Giambattista", "13-02-1966", "LFRGMB66B13I456F", false, "M",
 				"0863445566", null, "alfredo.giambattista@email.com", 30.00f, (short) 0, (short) 0));
 		
 		// Nota: ho dovuto aggiungere un metodo Library.getUser(int index) per farmi riportare un istanza di
 		// utente dato un certo indice, per poter utilizzare il costruttore all'istruzione seguente
-		library.addUser(new User("esterno", "Giorgio", "29-01-1999", "GRGGMB99A29I456F", false, "M", 
+		library.addUser(new User(UserType.ESTERNO, "Giorgio", "29-01-1999", "GRGGMB99A29I456F", false, "M", 
 				null, "giorgio.giambattista@email.com", 40.0f, (short) 0, library.getUser(2)));
 		
 		// Inserimento libri
@@ -117,25 +120,31 @@ public class Main {
 //		else System.out.println("Inserimento 3:NO");
 		
 		System.out.println("Inserimento 1:" + (
-				library.addBook(new Book("Title1", "Me", new Date(126, 3, 1) /* 1/04/2026 */, "5674783657846357", 20f, "horror", "editor1", 300, "italiano", "")) ?
+				library.addItem(new Book("Title1", "Me", new Date(126, 3, 1) /* 1/04/2026 */, "5674783657846357", 20f, "horror", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 		));
 		
 		System.out.println("Inserimento 2:" + (
-				library.addBook(new Book("Title2", "Me", new Date(125, 3, 1) /* 1/04/2025 */, "5674783657846358", 20f, "science", "editor1", 300, "italiano", "")) ?
+				library.addItem(new Book("Title2", "Me", new Date(125, 3, 1) /* 1/04/2025 */, "5674783657846358", 20f, "science", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 				));
 		
 		System.out.println("Inserimento 3:" +(
-				library.addBook(new Book("Title3", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846359", 20f, "thriller", "editor1", 300, "italiano", "")) ?
+				library.addItem(new Book("Title3", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846359", 20f, "thriller", "editor1", 300, "italiano", "")) ?
 						"OK" : "NO"
 				));
 		
 		System.out.println("Inserimento 4:" +(
-				library.addDVD(new DVD("Film1", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846360", 20f, "thriller", "editor1", "italiano", 180, "DVD", 4.7f)) ?
+				library.addItem(new DVD("Film1", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846360", 20f, "thriller", "editor1", "italiano", 180, "DVD", 4.7f)) ?
 						"OK" : "NO"
 				));
 		
+		System.out.println("Inserimento 5:" +(
+				library.addItem(new Magazine("Rivista 1", "Me", new Date(124, 3, 1) /* 1/04/2024 */, "5674783657846361", 20f, "thriller", "editor1", "italiano", 2, "weekly")) ?
+						"OK" : "NO"
+				));
+		
+			
 		library.debug();
 		System.out.println();
 		System.out.println(library.ricercaPerIsbn("5674783657846358"));
@@ -150,6 +159,8 @@ public class Main {
 //		System.out.println(item2.TEST2);
 		
 //		it.univaq.biblioteca.books.Item.test();
+		
+		System.out.println(library.existStudent("Mario", "Rossi"));
 	}
 
 }

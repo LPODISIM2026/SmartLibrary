@@ -3,7 +3,9 @@ package it.univaq.biblioteca;
 import it.univaq.biblioteca.catalog.Book;
 import it.univaq.biblioteca.catalog.DVD;
 import it.univaq.biblioteca.catalog.Item;
+import it.univaq.biblioteca.catalog.Magazine;
 import it.univaq.biblioteca.users.User;
+import it.univaq.biblioteca.users.UserType;
 
 public class Library {
 	
@@ -27,20 +29,60 @@ public class Library {
 		users = new User[maxUsers];		
 	}
 	
-	public boolean addBook(Book book) {
-		if (this.ricercaGeneralePerIsbn(book.getIsbn()) == null) {
-			catalog[++book_index] = book;
+	public boolean addItem(Item item) {
+		if (this.ricercaGeneralePerIsbn(item.getIsbn()) == null) {
+			catalog[++book_index] = item;
 			return true;
 		}
 		else return false; // else posso anche toglierlo in questo caso
 	}
 	
+	/**
+	 * This method is deprecated, please migrate to addItem(...)
+	 * 
+	 * @param book
+	 * @return
+	 */
+	@Deprecated
+	public boolean addBook(Book book) {
+		return addItem(book);
+//		if (this.ricercaGeneralePerIsbn(book.getIsbn()) == null) {
+//			catalog[++book_index] = book;
+//			return true;
+//		}
+//		else return false; // else posso anche toglierlo in questo caso
+	}
+	
+	/**
+	 * This method is deprecated, please migrate to addItem(...)
+	 * 
+	 * @param dvd
+	 * @return
+	 */
+	@Deprecated
 	public boolean addDVD(DVD dvd) {
-		if (this.ricercaGeneralePerIsbn(dvd.getIsbn()) == null) {
-			catalog[++book_index] = dvd;
-			return true;
-		}
-		else return false; // else posso anche toglierlo in questo caso
+		return addItem(dvd);
+//		if (this.ricercaGeneralePerIsbn(dvd.getIsbn()) == null) {
+//			catalog[++book_index] = dvd;
+//			return true;
+//		}
+//		else return false; // else posso anche toglierlo in questo caso
+	}
+	
+	/**
+	 * This method is deprecated, please migrate to addItem(...)
+	 * 
+	 * @param magazine
+	 * @return
+	 */
+	@Deprecated
+	public boolean addMagazine(Magazine magazine) {
+		return addItem(magazine);
+//		if (this.ricercaGeneralePerIsbn(magazine.getIsbn()) == null) {
+//			catalog[++book_index] = magazine;
+//			return true;
+//		}
+//		else return false; // else posso anche toglierlo in questo caso
 	}
 	
 	public User getUser(int index) {
@@ -113,15 +155,26 @@ public class Library {
 		return result;
 	}
 	
+	public User existStudent(String name, String surname) {
+		for (User u: users) {			
+			if (u.getType() == UserType.STUDENTE) {
+				if (u.getName().equals(name) && u.getSurname().equals(surname)) {
+					return u;
+				}
+			}
+		}
+		return null;
+	}
+	
 	public void debug() {
-		System.out.println("Utenti ->");
+		System.out.println("Users ->");
 		for (User u: users)
 			if (u != null)
 				System.out.println(u);
-		System.out.println("Libri ->");
+		System.out.println("Catalog ->");
 		for (Item b: catalog)
 			if (b != null)
-				System.out.println(b);
+				System.out.println(b.getDetails());
 	}
 	
 }

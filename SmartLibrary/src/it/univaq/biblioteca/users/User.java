@@ -7,8 +7,9 @@ public class User {
 	static private long ID_source = 0;
 	
 	// User IDs
-	private long ID; 
-	private String type; // (“studente”, “docente”, “esterno”) TODO - change with enumeration
+	private long ID;
+	private UserType type;
+//	private String type; // (“studente”, “docente”, “esterno”) TODO - change with enumeration
 
 	// Personal Data
 	private String name;
@@ -35,7 +36,7 @@ public class User {
 		User.ID_source+= 2;
 	}
 	
-	private void data_set(String type, String name, String surname, String birthDate, String taxCode,
+	private void data_set(UserType type, String name, String surname, String birthDate, String taxCode,
 			boolean bioGender, String gender, String phoneNumber, String mobileNumber, String email, float budget,
 			short feePlan, short creditScore) {
 		this.id_set();
@@ -74,7 +75,7 @@ public class User {
 	 * @param creditScore
 	 */
 	@Deprecated
-	public User(long iD, String type, String name, String surname, String birthDate, String taxCode, boolean bioGender,
+	public User(long iD, UserType type, String name, String surname, String birthDate, String taxCode, boolean bioGender,
 			String gender, String phoneNumber, String mobileNumber, String email, float budget, short feePlan,
 			short creditScore) {
 		super();
@@ -100,7 +101,7 @@ public class User {
 	 * @param feePlan
 	 * @param creditScore
 	 */	
-	public User(String type, String name, String surname, String birthDate, String taxCode,
+	public User(UserType type, String name, String surname, String birthDate, String taxCode,
 			boolean bioGender, String gender, String phoneNumber, String mobileNumber, String email, float budget,
 			short feePlan, short creditScore) {
 		super();
@@ -121,7 +122,7 @@ public class User {
 	 * @param feePlan
 	 * @param user
 	 */
-	public User(String type, String name, String birthDate, String taxCode, boolean bioGender, String gender,
+	public User(UserType type, String name, String birthDate, String taxCode, boolean bioGender, String gender,
 			String mobileNumber, String email, float budget, short feePlan, User user) {
 		super();
 		this.id_set();
@@ -150,13 +151,13 @@ public class User {
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public UserType getType() {
 		return type;
 	}
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 	/**

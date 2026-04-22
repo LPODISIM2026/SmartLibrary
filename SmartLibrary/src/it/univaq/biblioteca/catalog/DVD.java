@@ -35,6 +35,13 @@ public class DVD extends Item {
 				+ ", getIsbn()=" + getIsbn() + ", getPrice()=" + getPrice() + ", getCategory()=" + getCategory()
 				+ ", getEditor()=" + getEditor() + ", getLanguage()=" + getLanguage() + "]";
 	}
+
+	@Override
+	public String getDetails() {
+		return "DVD [title=" + getTitle() + ", language=" + getLanguage() + ", isbn=" + getIsbn() +
+				", durata=" + durata + "]";
+	}
+	
 	
 	
 }

@@ -69,6 +69,8 @@ public class Book extends Item {
 	public void setPages(int pages) {
 		this.pages = pages;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -76,6 +78,12 @@ public class Book extends Item {
 				+ getAuthor() + ", getPublishedDate()=" + getPublishedDate() + ", getIsbn()=" + getIsbn()
 				+ ", getPrice()=" + getPrice() + ", getCategory()=" + getCategory() + ", getEditor()=" + getEditor()
 				+ ", getLanguage()=" + getLanguage() + "]";
+	}
+
+	@Override
+	public String getDetails() {
+		return "Book [title=" + getTitle() + ", isbn=" + getIsbn() + ", language=" + getLanguage() + ", pages=" + pages
+				+ ", abstract=" + _abstract + "]";
 	}
 	
 

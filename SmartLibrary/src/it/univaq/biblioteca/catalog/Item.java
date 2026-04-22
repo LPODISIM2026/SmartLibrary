@@ -2,11 +2,11 @@ package it.univaq.biblioteca.catalog;
 
 import java.util.Date;
 
-public class Item {
+public abstract class Item {
 	
 	private String title;
 	private String author;
-	private Date publishedDate; // TODO - convert to Date object
+	private Date publishedDate;
 	private String isbn;
 	private float price;
 	private String category;
@@ -165,6 +165,7 @@ public class Item {
 		this.language = language;
 	}
 
+	abstract public String getDetails();
 	
 		
 }
