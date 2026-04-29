@@ -85,6 +85,12 @@ public class Book extends Item {
 		return "Book [title=" + getTitle() + ", isbn=" + getIsbn() + ", language=" + getLanguage() + ", pages=" + pages
 				+ ", abstract=" + _abstract + "]";
 	}
+
+	
+	@Override
+	public boolean matches(String query) {
+		return getIsbn().equals(query);
+	}
 	
 
 }

@@ -41,7 +41,11 @@ public class DVD extends Item {
 		return "DVD [title=" + getTitle() + ", language=" + getLanguage() + ", isbn=" + getIsbn() +
 				", durata=" + durata + "]";
 	}
-	
+
+	@Override
+	public boolean matches(String query) {
+		return getAuthor().contains(query);
+	}	
 	
 	
 }

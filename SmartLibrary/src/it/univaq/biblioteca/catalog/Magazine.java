@@ -49,6 +49,15 @@ public class Magazine extends Item {
 		return "Magazine [language=" + getLanguage() + ", title=" + getTitle() + ", isbn=" + getIsbn() +
 				", number=" + number + ", period=" + periodicity + "]";				
 	}
+
+
+	@Override
+	public boolean matches(String query) {		
+		return getTitle().equalsIgnoreCase(query);
+	}
+
+
+	
 	
 	
 	

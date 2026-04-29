@@ -2,7 +2,7 @@ package it.univaq.biblioteca.catalog;
 
 import java.util.Date;
 
-public abstract class Item {
+public abstract class Item implements IBorrowable, ISearchable {
 	
 	private String title;
 	private String author;
@@ -12,6 +12,9 @@ public abstract class Item {
 	private String category;
 	private String editor;
 	private String language;
+	
+	// IBorrowable
+	private boolean avail = true;
 	
 	
 	/**
@@ -167,5 +170,18 @@ public abstract class Item {
 
 	abstract public String getDetails();
 	
+	// IBorrowable
+	
+	public void borrow() {
+		avail = false;
+	}
+	
+    public void returnItem() {
+    	avail = true;
+    }
+    
+    public boolean isAvailable() {
+    	return avail;
+    }
 		
 }

@@ -161,6 +161,15 @@ public class Main {
 //		it.univaq.biblioteca.books.Item.test();
 		
 		System.out.println(library.existStudent("Mario", "Rossi"));
+		
+		System.out.println(library.ricercaPerIsbn("5674783657846359").getSearchScore("5674783657846350"));
+		
+		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());		
+		library.ricercaPerIsbn("5674783657846359").borrow();
+		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
+		library.ricercaPerIsbn("5674783657846359").returnItem();
+		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
+		
 	}
 
 }

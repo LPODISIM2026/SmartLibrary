@@ -2,6 +2,7 @@ package it.univaq.biblioteca;
 
 import it.univaq.biblioteca.catalog.Book;
 import it.univaq.biblioteca.catalog.DVD;
+import it.univaq.biblioteca.catalog.IItem;
 import it.univaq.biblioteca.catalog.Item;
 import it.univaq.biblioteca.catalog.Magazine;
 import it.univaq.biblioteca.users.User;
@@ -120,9 +121,10 @@ public class Library {
 	
 	public Book ricercaPerIsbn(String isbn) {
 		for (Item i: catalog) {			
-			if (i instanceof Book) {
+			if (i instanceof Book) {				
 				Book b = (Book) i;
-				if (b != null && b.getIsbn().equals(isbn))
+//				if (b != null && b.getIsbn().equals(isbn))
+				if (b != null && b.matches(isbn))
 					return b;
 			}
 		}
