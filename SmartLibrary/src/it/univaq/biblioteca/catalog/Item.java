@@ -172,13 +172,35 @@ public abstract class Item implements IBorrowable, ISearchable {
 	
 	// IBorrowable
 	
-	public void borrow() {
-		avail = false;
+//	public boolean borrow() {
+//		if (isAvailable()) {
+//			avail = false;
+//			return true;
+//		}
+//		else return false;
+//	}
+//	
+//    public boolean returnItem() {
+//    	if (!isAvailable()) {
+//    		avail = true;
+//    		return true;
+//    	}    	
+//    	else return false;
+//    }
+	
+	public void borrow() throws Unborrowable {
+		if (isAvailable()) {
+			avail = false;
+		}
+		else throw new Unborrowable();
 	}
 	
-    public void returnItem() {
-    	avail = true;
-    }
+	public void returnItem() throws Unreturnable {
+		if (!isAvailable()) {
+			avail = true;
+		} 
+		else throw new Unreturnable();
+	}
     
     public boolean isAvailable() {
     	return avail;

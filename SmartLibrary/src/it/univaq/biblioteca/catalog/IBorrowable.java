@@ -2,7 +2,7 @@ package it.univaq.biblioteca.catalog;
 
 public interface IBorrowable {
 
-	void borrow();
-    void returnItem();
+	void borrow() throws Unborrowable;
+    void returnItem() throws Unreturnable;
     boolean isAvailable();
 }

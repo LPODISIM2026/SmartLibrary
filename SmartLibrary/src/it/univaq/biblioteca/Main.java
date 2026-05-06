@@ -7,6 +7,8 @@ import it.univaq.biblioteca.catalog.Book;
 import it.univaq.biblioteca.catalog.DVD;
 import it.univaq.biblioteca.catalog.Item;
 import it.univaq.biblioteca.catalog.Magazine;
+import it.univaq.biblioteca.catalog.Unborrowable;
+import it.univaq.biblioteca.catalog.Unreturnable;
 import it.univaq.biblioteca.users.User;
 import it.univaq.biblioteca.users.UserType;
 
@@ -163,12 +165,23 @@ public class Main {
 		System.out.println(library.existStudent("Mario", "Rossi"));
 		
 		System.out.println(library.ricercaPerIsbn("5674783657846359").getSearchScore("5674783657846350"));
+						
+		try {
+			System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
+			library.ricercaPerIsbn("5674783657846359").borrow();
+			library.ricercaPerIsbn("5674783657846359").borrow();
+			
+			System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
+			library.ricercaPerIsbn("5674783657846359").returnItem();
+			System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
+		} catch (Unborrowable e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		} catch (Unreturnable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());		
-		library.ricercaPerIsbn("5674783657846359").borrow();
-		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
-		library.ricercaPerIsbn("5674783657846359").returnItem();
-		System.out.println(library.ricercaPerIsbn("5674783657846359").isAvailable());
 		
 	}
 
